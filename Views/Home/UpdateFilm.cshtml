@@ -1,0 +1,89 @@
+﻿@model HiltonFilmCollection2.Models.FilmItem
+
+<h3>Please update the film information.</h3>
+<h6><span style="color:red">*</span> Indicates a required field.</h6>
+
+<br />
+<br />
+@*This form pulls in information from the database and allows it to be updated*@
+<form asp-action="UpdateFilm" method="post">
+    <input type="hidden" name="filmid" id="filmid" value="@ViewBag.film.FilmId" />
+    <div class="form-group row">
+        <label asp-for="Title" class="col-sm-2 col-form-label">Title<span style="color:red">*</span></label>
+        <div class="col-sm-10">
+            <input asp-for="Title" class="form-control" placeholder="Enter film title" value="@ViewBag.film.Title">
+        </div>
+    </div>
+    <div class="form-group row">
+        <label asp-for="Year" class="col-sm-2 col-form-label">Year<span style="color:red">*</span></label>
+        <div class="col-sm-10">
+            <input asp-for="Year" class="form-control" placeholder="Enter release year" value="@ViewBag.film.Year">
+        </div>
+    </div>
+    <div class="form-group row">
+        <label asp-for="Director" class="col-sm-2 col-form-label">Director<span style="color:red">*</span></label>
+        <div class="col-sm-10">
+            <input asp-for="Director" class="form-control" placeholder="Enter director name" value="@ViewBag.film.Director">
+        </div>
+    </div>
+    <fieldset class="form-group">
+        <div class="row">
+            <legend class="col-form-label col-sm-2 pt-0">Rating<span style="color:red">*</span></legend>
+            <div class="col-sm-10">
+                <div class="form-check form-check-inline">
+                    <input id="Rating1" name="Rating" type="radio" class="form-check-input" value="G" @Html.Raw((ViewBag.film.Rating == "G") ? "checked" : "")>
+                    <label for="Rating1" name="Rating" type="radio" class="form-check-label">G</label>
+                </div>
+                <div class="form-check form-check-inline">
+                    <input id="Rating2" name="Rating" type="radio" class="form-check-input" value="PG" @Html.Raw((ViewBag.film.Rating == "PG") ? "checked" : "")>
+                    <label for="Rating2" name="Rating" type="radio" class="form-check-label">PG</label>
+                </div>
+                <div class="form-check form-check-inline">
+                    <input id="Rating3" name="Rating" type="radio" class="form-check-input" value="PG-13" @Html.Raw((ViewBag.film.Rating == "PG-13") ? "checked" : "")>
+                    <label for="Rating3" name="Rating" type="radio" class="form-check-label">PG-13</label>
+                </div>
+                <div class="form-check form-check-inline">
+                    <input id="Rating4" name="Rating" type="radio" class="form-check-input" value="R" @Html.Raw((ViewBag.film.Rating == "R") ? "checked" : "")>
+                    <label for="Rating4" name="Rating" type="radio" class="form-check-label">R</label>
+                </div>
+            </div>
+        </div>
+    </fieldset>
+    <fieldset class="form-group">
+        <div class="row">
+            <legend class="col-form-label col-sm-2 pt-0">Edited?</legend>
+            <div class="col-sm-10">
+                <div class="form-check form-check-inline">
+                    <input id="Edited1" name="Edited" type="radio" class="form-check-input" value="true" @Html.Raw((ViewBag.film.Edited == true) ? "checked" : "")>
+                    <label for="Edited1" name="Edited" class="form-check-label">Yes</label>
+                </div>
+                <div class="form-check form-check-inline">
+                    <input id="Edited2" name="Edited" type="radio" class="form-check-input" value="false" @Html.Raw((ViewBag.film.Edited == false) ? "checked" : "")>
+                    <label for="Edited2" name="Edited" class="form-check-label">No</label>
+                </div>
+            </div>
+        </div>
+    </fieldset>
+    <div class="form-group row">
+        <label asp-for="LentTo" class="col-sm-2 col-form-label">Lent To</label>
+        <div class="col-sm-10">
+            <input asp-for="LentTo" class="form-control" placeholder="Enter who movie is currently lent to" value="@ViewBag.film.LentTo">
+        </div>
+    </div>
+    <div class="form-group row">
+        <label asp-for="Notes" class="col-sm-2 col-form-label">Notes</label>
+        <div class="col-sm-10">
+            <input asp-for="Notes" class="form-control" placeholder="Enter notes" value="@ViewBag.film.Notes"></input>
+        </div>
+    </div>
+    <br />
+    <div class="form-group row text-center">
+        <div class="col-sm-12">
+            <button type="submit" class="btn btn-primary justify-content-center">Update Film Information</button>
+        </div>
+    </div>
+
+    <!-- Display error message with invalid input -->
+    <div asp-validation-summary="All" style="color: red; font-weight: bold"></div>
+
+</form>

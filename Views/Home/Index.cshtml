@@ -1,0 +1,31 @@
+﻿@{
+    ViewBag.Title = "The Joel Hilton Film Collection";
+}
+
+@*Home page with links to the other pages*@
+<div class="text-center">
+    <h3>This is a website for all films deemed worthy to be part of Joel Hilton's Film Collection.</h3>
+    <br />
+
+    <img src="~/1.jpg" width="500" />
+
+</div>
+<div class="text-center">
+    <br />
+    <br />
+    <a asp-action="FilmSubmission">
+        <button class="btn btn-primary justify-content-center">Click here to add a film to the collection!</button>
+    </a>
+    <br />
+    <br />
+    <a asp-action="FilmCollection">
+        <button class="btn btn-primary justify-content-center">Click here to see the films in the collection!</button>
+    </a>
+    <br />
+    <br />
+    <a asp-action="MyPodcasts">
+        <button class="btn btn-primary justify-content-center">Click here to check out my podcasts!</button>
+    </a>
+    <br />
+    <br />
+</div>

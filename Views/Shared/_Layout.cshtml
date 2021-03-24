@@ -1,0 +1,49 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <title>Joel Hilton Film Collection Site</title>
+    <link rel="shortcut icon" type="image/x-icon" href="~/favicon.ico" />
+    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="~/css/site.css" />
+</head>
+
+<body>
+
+    @*Add navigation bar to all pages*@
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark text-white p-2">
+        <a class="navbar-brand" asp-controller="Home" asp-action="Index">Joel Hilton's Film Collection</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+            <div class="navbar-nav">
+                <a class="nav-item nav-link" asp-controller="Home" asp-action="Index">Home</a>
+                <a class="nav-item nav-link" asp-controller="Home" asp-action="FilmSubmission">Add Film</a>
+                <a class="nav-item nav-link" asp-controller="Home" asp-action="FilmCollection">Film Collection</a>
+                <a class="nav-item nav-link" asp-controller="Home" asp-action="MyPodcasts">My Podcasts</a>
+            </div>
+        </div>
+    </nav>
+
+    <br />
+
+    <div style="padding-top: 50px; padding-bottom: 50px; padding-left: 50px; padding-right: 50px;">
+        @RenderBody()
+    </div>
+   
+
+    <br />
+    <br />
+    <br />
+    <br />
+    <br />
+    <br />
+
+    @*Add footer to all pages*@
+    <footer style="padding-left: 50px; padding-right: 50px;">This is the footer. Copyright 2021</footer>
+
+
+
+</body>
+</html>

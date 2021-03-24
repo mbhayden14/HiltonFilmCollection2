@@ -1,0 +1,71 @@
+﻿@{
+    ViewBag.Title = "Film Collection";
+}
+
+@model IEnumerable<FilmItem>
+
+<div>
+    <h3>Here are the films currently in the collection:</h3>
+    <br />
+    <table class="table table-bordered table-striped">
+        <thead>
+            <tr><th>Title</th><th>Year</th><th>Director</th><th>Rating</th><th>Edited</th><th>Lent To:</th><th>Notes</th><th>Edit</th><th>Delete</th></tr>
+        </thead>
+
+        <tbody>
+            @foreach (HiltonFilmCollection2.Models.FilmItem x in Model)
+            {
+                <!--Make Independence Day not display-->
+                if (x.Title.ToUpper() != "INDEPENDENCE DAY")
+                {
+                    
+                    <tr>
+                        <td class="text-left">@x.Title</td>
+                        <td class="text-center">@x.Year</td>
+                        <td class="text-left">@x.Director</td>
+                        <td class="text-center">@x.Rating</td>
+
+                        <!--Change true/false output to yes/no-->
+                        @if (x.Edited == true)
+                        {
+                            <td class="text-center">Yes</td>
+                        }
+                        else if (x.Edited == false)
+                        {
+                            <td class="text-center">No</td>
+                        }
+                        else
+                        {
+                            <td class="text-center"></td>
+                        }
+
+                        <td class="text-left">@x.LentTo</td>
+                        <td class="text-left">@x.Notes</td>
+
+                        @*Add edit button*@
+                        <td>
+                            <form asp-action="UpdateFilm" method="get">
+                                <input type="hidden" name="filmid" value="@x.FilmId" />
+                                <button class="btn btn-sm btn-primary" type="submit">Edit</button>
+                            </form>
+                        </td>
+
+                        @*Add delete button*@
+                        <td>
+                            <form asp-action="FilmCollection" method="post">
+                                <input type="hidden" name="filmid" value="@x.FilmId" />
+                                <button class="btn btn-sm btn-danger" type="submit">Delete</button>
+                            </form>
+                        </td>
+                    </tr>                      
+                    
+                }
+                else
+                {
+
+                }
+            }
+
+        </tbody>
+    </table>
+</div>
